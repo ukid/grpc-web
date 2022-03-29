@@ -1137,6 +1137,12 @@ void PrintUnaryCall(Printer* printer, std::map<string, string> vars) {
   printer->Outdent();
   printer->Outdent();
   printer->Print("};\n\n\n");
+
+  printer->Print(vars,
+                 "/**\n"
+                 " * export request type\n"
+                 " */\n");
+  printer->Print(vars, "proto.$package_dot$$service_name$Client.prototype.$js_method_name$.req = $in_type$;\n\n\n");
 }
 
 void PrintPromiseUnaryCall(Printer* printer, std::map<string, string> vars) {
